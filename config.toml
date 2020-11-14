@@ -1,0 +1,18 @@
+theme = "hyde"
+baseURL = "https://appelsiini.net/"
+languageCode = "en-us"
+title = "Mika Tuupola"
+
+[params]
+  description = "Technology guy gone advertising."
+  layoutReverse = true
+  copyright = "Copyright © 2020 Mika Tuupola"
+
+[Menus]
+  main = [
+      {Name = "GitHub", URL = "https://github.com/tuupola/"},
+      {Name = "Instagram", URL = "https://www.instagram.com/tuupola/"},
+  ]
+
+[markup.goldmark.renderer]
+unsafe= true
