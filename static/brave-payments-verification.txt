@@ -1,0 +1,5 @@
+This is a Brave Payments publisher verification file.
+
+Domain: appelsiini.net
+Token: ecf5eb171cb6d609aa011a33d40346d7bc6f45163a47925d1697d1156568e318
+

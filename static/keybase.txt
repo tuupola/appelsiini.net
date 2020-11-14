@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/tuupola
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.appelsiini.net
+  * I am tuupola (https://keybase.io/tuupola) on keybase.
+  * I have a public key ASDd8KUHc2ysqd2rplSt3onYRIq3UJ8zqnnADb2dg0KWlgo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120ddf0a507736caca9ddaba654adde89d8448ab7509f33aa79c00dbd9d834296960a",
+            "host": "keybase.io",
+            "kid": "0120ddf0a507736caca9ddaba654adde89d8448ab7509f33aa79c00dbd9d834296960a",
+            "uid": "d4b7203185dbdadf538fe3c24876f519",
+            "username": "tuupola"
+        },
+        "service": {
+            "hostname": "www.appelsiini.net",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.17"
+    },
+    "ctime": 1475937603,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1475937468,
+        "hash": "868846b96a3cf8e5d6a4ede39e118f76f9a24f349c8a69f8532111d18c961685ec9d7a48ff9c215c6e6f8bfd0c6620b5fdb7e36a867213cf2747ffbf82c7ff90",
+        "seqno": 669491
+    },
+    "prev": "5b1374106e8dcc039b24eec149c2bf504c6a943912e9afecbbd3492a830dd2a1",
+    "seqno": 16,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg3fClB3NsrKndq6ZUrd6J2ESKt1CfM6p5wA29nYNClpYKp3BheWxvYWTFAvp7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwZGRmMGE1MDc3MzZjYWNhOWRkYWJhNjU0YWRkZTg5ZDg0NDhhYjc1MDlmMzNhYTc5YzAwZGJkOWQ4MzQyOTY5NjBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwZGRmMGE1MDc3MzZjYWNhOWRkYWJhNjU0YWRkZTg5ZDg0NDhhYjc1MDlmMzNhYTc5YzAwZGJkOWQ4MzQyOTY5NjBhIiwidWlkIjoiZDRiNzIwMzE4NWRiZGFkZjUzOGZlM2MyNDg3NmY1MTkiLCJ1c2VybmFtZSI6InR1dXBvbGEifSwic2VydmljZSI6eyJob3N0bmFtZSI6Ind3dy5hcHBlbHNpaW5pLm5ldCIsInByb3RvY29sIjoiaHR0cHM6In0sInR5cGUiOiJ3ZWJfc2VydmljZV9iaW5kaW5nIiwidmVyc2lvbiI6MX0sImNsaWVudCI6eyJuYW1lIjoia2V5YmFzZS5pbyBnbyBjbGllbnQiLCJ2ZXJzaW9uIjoiMS4wLjE3In0sImN0aW1lIjoxNDc1OTM3NjAzLCJleHBpcmVfaW4iOjUwNDU3NjAwMCwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE0NzU5Mzc0NjgsImhhc2giOiI4Njg4NDZiOTZhM2NmOGU1ZDZhNGVkZTM5ZTExOGY3NmY5YTI0ZjM0OWM4YTY5Zjg1MzIxMTFkMThjOTYxNjg1ZWM5ZDdhNDhmZjljMjE1YzZlNmY4YmZkMGM2NjIwYjVmZGI3ZTM2YTg2NzIxM2NmMjc0N2ZmYmY4MmM3ZmY5MCIsInNlcW5vIjo2Njk0OTF9LCJwcmV2IjoiNWIxMzc0MTA2ZThkY2MwMzliMjRlZWMxNDljMmJmNTA0YzZhOTQzOTEyZTlhZmVjYmJkMzQ5MmE4MzBkZDJhMSIsInNlcW5vIjoxNiwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEA0qvJhC75VO8FU0N60br/MhVCz6vOSmBp+wNrqViVQ0JCm2KSJs5ZQMESNRpm9mgtpIHRgII7vuoGc+g6txxUHqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgIaMrgRVzx1A+Ed6yrHdgc7WtSrNjh+Nuc27v82NEz0GjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/tuupola
+
+==================================================================

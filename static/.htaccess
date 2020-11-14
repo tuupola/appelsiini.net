@@ -1,0 +1,51 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^(.*)/index\.html$ $1/ [R=301,L]
+
+RedirectMatch 301 ^/feed.xml$ /index.xml
+
+RedirectMatch 301 ^/2008/11/introduction-to-marker-clustering-with-google-maps /2008/introduction-to-marker-clustering-with-google-maps/
+RedirectMatch 301 ^/2017/m5stack-esp32-firmware-cli /2018/m5stack-esp32-firmware-cli/
+RedirectMatch 301 ^/2017/how-does-trilateration-work /2017/trilateration-with-n-points/
+
+RedirectMatch 301 ^/https://appelsiini.net /
+RedirectMatch 301 ^/javascript$ /tags/javascript/
+RedirectMatch 301 ^/lazyload$ /tags/javascript/
+RedirectMatch 301 ^/lazy-load$ /tags/javascript/
+RedirectMatch 301 ^/gears$ /tags/javascript/
+RedirectMatch 301 ^/jeditable$ /tags/javascript/
+RedirectMatch 301 ^/jquery$ /tags/javascript/
+RedirectMatch 301 ^/chained$ /projects/chained/
+RedirectMatch 301 ^/zepto$ /projects/chained/
+RedirectMatch 301 ^/maps$ /tags/maps/
+RedirectMatch 301 ^/pear$ /tags/php/
+RedirectMatch 301 ^/ruby$ /tags/ruby/
+RedirectMatch 301 ^/avr$ /tags/avr/
+RedirectMatch 301 ^/php$ /tags/php/
+
+RedirectMatch 301 ^/projects/lazyload/enabled_timeout\.html$ /projects/lazyload/timeout/
+RedirectMatch 301 ^/projects/lazyload/enabled_background\.html$ /projects/lazyload/background/
+RedirectMatch 301 ^/projects/lazyload/enabled_fadein\.html$ /projects/lazyload/fadein/
+RedirectMatch 301 ^/projects/lazyload/enabled_gazillion\.html$ /projects/lazyload/gazillion/
+RedirectMatch 301 ^/projects/lazyload/enabled\.html$ /projects/lazyload/enabled/
+
+RedirectMatch 301 ^/projects/lazyload/enabled_wide_container.html$ /projects/lazyload/fadein/
+RedirectMatch 301 ^/projects/lazyload/enabled_container.html$ /projects/lazyload/fadein/
+RedirectMatch 301 ^/projects/lazyload/enabled_ajax.html$ /projects/lazyload/fadein/
+
+RedirectMatch 301 ^/projects/lazyload/jquery.lazyload https://cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js
+RedirectMatch 301 ^/projects/chained/jquery.chained  https://cdnjs.cloudflare.com/ajax/libs/jquery-chained/1.0.1/jquery.chained.min.js
+
+<FilesMatch "\.html$">
+    Header add Link "</css/poole.css>; rel=preload; as=style"
+    Header add Link "</css/syntax.css>; rel=preload; as=style"
+    Header add Link "</css/print.css>; rel=preload; as=style"
+    Header add Link "</css/hyde.css>; rel=preload; as=style"
+    Header add Link "<https://fonts.googleapis.com>; rel=preconnect"
+    Header add Link "<https://cdn.simpleanalytics.io>; rel=preconnect"
+</FilesMatch>

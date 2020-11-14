@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Trilateration Debugger</title>
+  <style>
+    #map {
+      height: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <script>
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        mapTypeId: 'terrain'
+      });
+
+      var bounds = new google.maps.LatLngBounds();
+
+      var query = new URLSearchParams(window.location.search);
+      for (var marker of query.getAll("m")) {
+        console.log(marker);
+        marker = marker.split(",")
+        var intersection = new google.maps.Marker({
+          position: {lat: parseFloat(marker[0]), lng: parseFloat(marker[1])},
+          label: marker[2],
+          map: map
+        });
+      }
+
+      query.delete("m");
+
+      for (var value of query.values()) {
+        var circle = value.split(",");
+        console.log(circle);
+        var center = {lat: parseFloat(circle[0]), lng: parseFloat(circle[1])}
+        var distance = parseInt(circle[2]);
+        var cityCircle = new google.maps.Circle({
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: '#0000FF',
+          fillOpacity: 0.20,
+          map: map,
+          center: center,
+          radius: distance,
+        });
+
+        bounds.union(cityCircle.getBounds());
+      }
+
+      map.fitBounds(bounds);
+    }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrQfZDq1y9gqnw7mBkqOXoilxXcf7Wqzg&callback=initMap">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/url-search-params/0.9.0/url-search-params.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-190966-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+</html>
