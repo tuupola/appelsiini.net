@@ -1,8 +1,8 @@
 ---
-title: Programming GD32V Longan Nano
+title: Programming the GD32V Longan Nano
 date: 2020-11-14
-draft: true
-image: img/2020/bbb-cover-1.jpg
+draft: false
+image: img/2020/gd32v-rotozoom.jpg
 description: Lorem ipsum dolor sit amet.
 tags:
     - Electronics
@@ -10,7 +10,9 @@ tags:
     - HAGL
 ---
 
-![Big Buck Bunny on ESP32](/img/2020/bbb-cover-1.jpg)
+![Plasma on GD32V](/img/2020/gd32v-plasma.jpg)
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 <!--more-->
 
@@ -18,11 +20,9 @@ tags:
 
 For programming a GD32V series SoC best choice at the moment is the [Nuclei SDK](https://doc.nucleisys.com/nuclei_sdk/). It seems to be well maintained, exceptionally well structured and is quite easy to learn. Developing is done with your favourite text editor.
 
-The SDK supports three differend real time operating systems: FreeRTOS, UCOSII and RT-Thread. Since Longan Nano has only 32KB SRAM you might want to stay baremetal instead.
+The SDK supports three different real time operating systems: FreeRTOS, UCOSII and RT-Thread. Since Longan Nano has only 32kB SRAM you might want to stay baremetal instead.
 
-Nuclei SDK does not support Longan Nano out of the box, but I am currently writing a patch which [adds support for Longan Nano boards](https://github.com/tuupola/nuclei-sdk/tree/longan-nano).
-
-Basic hello world would look like the following.
+Nuclei SDK does support Longan Nano out of the box. Basic hello world and the Makefile would look like this.
 
 ```c
 #include <stdio.h>
@@ -32,5 +32,257 @@ void main(void)
     printf("Hello world\r\n");
 }
 ```
+
+```text
+TARGET = firmware
+NUCLEI_SDK_ROOT = ../nuclei-sdk
+SRCDIRS = .
+
+include $(NUCLEI_SDK_ROOT)/Build/Makefile.base
+```
+
+You would compile and upload it with the following commands.
+
+```text
+$ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano all
+$ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
+```
+
+The SDK will take care of basic things such use redirecting `STDOUT` to `USART`. This is where the [Sipeed USB-JTAG/TTL RISC-V Debugger](https://www.seeedstudio.com/Sipeed-USB-JTAG-TTL-RISC-V-Debugger-p-2910.html) really pays off. In addition to the JTAG interface it also acts as an USB to TTL converter.
+
+```text
+$ screen /dev/ttyUSB1 115200
+
+Nuclei SDK Build Time: Nov 14 2020, 23:17:41
+Download Mode: FLASHXIP
+CPU Frequency 108540000 Hz
+Hello world
+```
+
+## Uploading with the Sipeed RISC-V debugger
+
+To make both JTAG and serial interface work you need to connect all pins except `NC` (duh!) between the debugger and Longan Nano. If nitpicking second ground is also optional. Longan Nano `RST` is pin number 7 on the left side of the USB socket.
+
+![Wiring GD32V with Sipeed debugger](/img/2020/gd32v-debugger.jpg)
+
+| Debugger | Longan Nano |
+|----------|-------------|
+| GND	   | GND         |
+| RXD      | T0          |
+| TXD      | R0          |
+| NC       |             |
+| GND      | GND (optional) |
+| TDI      | JTDI        |
+| RST      | RST         |
+| TMS      | JTMS        |
+| TDO      | JTDO        |
+| TCK      | JTCK        |
+
+When flashing you also need to connect the USB-C socket to provide power. When using Nuclei SDK you can flash the firmware with make.
+
+```text
+$ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
+```
+
+## Uploading with the J-Link debugger
+
+![Wiring GD32V with J-Link](/img/2020/gd32v-jlink.jpg)
+
+
+| Debugger | Longan Nano |
+|----------|-------------|
+| VREF	   | 3v3         |
+| GND      | GND         |
+| TDI      | JTDI        |
+| RST      | RST         |
+| TMS      | JTMS        |
+| TDO      | JTDO        |
+| TCK      | JTCK        |
+
+You can also use SEGGER J-Link Commander to upload the firmware. The command line utility requires the firmare to be in hex format.
+
+```text
+$ riscv-nuclei-elf-objcopy firmware.elf -O ihex firmware.hex
+```
+
+You can connect to Longan Nano's JTAG interface automatically with the following.
+
+```text
+$ JLinkExe -device GD32VF103VBT6 -speed 4000 -if JTAG \
+  -jtagconf -1,-1 -autoconnect 1
+
+SEGGER J-Link Commander V6.86e (Compiled Oct 16 2020 18:21:57)
+DLL version V6.86e, compiled Oct 16 2020 18:21:45
+
+...
+
+J-Link>
+```
+
+To upload a new firmware manually, first halt the CPU and load the `firmware.hex` from above. Reset the core and peripherals. Set the program counter to `0x08000000` and finally enable the CPU and exit the command line utility.
+
+```text
+J-Link>halt
+J-Link>loadfile firmware.hex
+J-Link>r
+J-Link>setPC 0x08000000
+J-Link>go
+J-Link>q
+```
+
+If the new firmware does no run automatically you might need to powercycle the board.
+
+While manually poking the internals might be fun it gets bothersome in the long run. You can also put the above commands to an external file and pass it to `JLinkExe` to do all of the above automatically.
+
+```text
+$ cat upload.jlink
+halt
+loadfile firmware.hex
+r
+setPC 0x08000000
+go
+q
+```
+```text
+$ JLinkExe -device GD32VF103VBT6 -speed 4000 -if JTAG \
+  -jtagconf -1,-1 -autoconnect 1 -CommanderScript upload.jlink
+```
+
+## Uploading via USB
+
+If you don't have an external debugger it is also possible to upload via USB. At the time of writing you need to use latest `dfu-util` built from source.
+
+```text
+$ git clone git://git.code.sf.net/p/dfu-util/dfu-util
+$ cd dfu-util
+$ ./autogen.sh
+$ ./configure --prefix=/opt/dfu-util
+$ make -j8 install
+```
+
+Then add `/opt/dfu-util/bin` to your `$PATH` and you should be able to flash the firmware via USB.
+
+```text
+$ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano bin
+$ dfu-util -d 28e9:0189 -a 0 --dfuse-address 0x08000000:leave -D firmware.bin
+```
+
+Before running `dfu-util` you need to put the board to download mode. Do this by holding down the `BOOT` and `RESET` buttons and then release the `BOOT` button to enter download mode.
+
+## Uploading via Serial
+
+## Hello World on Screen
+
+For graphics programming you could use [HAGL](https://github.com/tuupola/hagl). As the name implies HAGL is a hardware agnostic graphics library. To make it work with Longan Nano you also need a [HAGL GD32V HAL](https://github.com/tuupola/hagl_gd32v_mipi)
+
+```text
+$ cd lib
+$ git clone git@github.com:tuupola/hagl.git
+$ git clone git@github.com:tuupola/hagl_gd32v_mipi.git hagl_hal
+```
+
+Add both dependencies to the project Makefile.
+
+```text
+TARGET = firmware
+NUCLEI_SDK_ROOT = ../nuclei-sdk
+SRCDIRS = . lib/hagl/src lib/hagl_hal/src
+INCDIRS = . lib/hagl/include lib/hagl_hal/include
+
+include $(NUCLEI_SDK_ROOT)/Build/Makefile.base
+```
+
+With all this in place you can create a flashing RGB Hello world!
+
+```c
+#include <nuclei_sdk_hal.h>
+#include <hagl_hal.h>
+#include <hagl.h>
+#include <font6x9.h>
+
+void main()
+{
+    color_t red = hagl_color(255, 0, 0);
+    color_t green = hagl_color(0, 255, 0);
+    color_t blue = hagl_color(0, 0, 255);
+
+    hagl_init();
+    hagl_clear_screen();
+
+    while (1) {
+        hagl_put_text(L"Hello world!", 48, 32, red, font6x9);
+        delay_1ms(100);
+
+        hagl_put_text(L"Hello world!", 48, 32, green, font6x9);
+        delay_1ms(100);
+
+        hagl_put_text(L"Hello world!", 48, 32, blue, font6x9);
+        delay_1ms(100);
+    };
+}
+```
+
+## Animations on screen
+
+For testing purpose lets assume we have three functions to initialise, animate and render bouncing balls on the screen.
+
+```c
+balls_init();
+balls_animate();
+balls_render();
+```
+
+You can find the [actual implementation](https://github.com/tuupola/gd32v_examples/tree/master/03_bouncing_ball) in GitHub. With above functions we can implement the main loop.
+
+
+```c
+#include <hagl_hal.h>
+#include <hagl.h>
+
+void main()
+{
+    hagl_init();
+    balls_init();
+
+    while (1) {
+        balls_animate();
+        hagl_clear_screen();
+        balls_render();
+    };
+}
+```
+
+![Bouncing balls with GD32V](/img/2020/gd32v-flying-balls.jpg)
+
+Writing directly to display is fine for unanimated content. However above code will have a horrible flicker. Problem can be fixed by enabling double buffering in hte Makefile.
+
+```text
+COMMON_FLAGS += -DHAGL_HAL_USE_DOUBLE_BUFFER
+```
+
+With double buffering enabled we also need to flush the contents from back buffer to display ie. front buffer. Here I also add some delay to slow down the animation.
+
+```c
+#include <nuclei_sdk_hal.h>
+#include <hagl_hal.h>
+#include <hagl.h>
+
+void main()
+{
+    hagl_init();
+    balls_init();
+
+    while (1) {
+        balls_animate();
+        hagl_clear_screen();
+        balls_render();
+
+        hagl_flush();
+        delay_1ms(30);
+    };
+}
+```
+
+This is very naive approach and you need to manually adjust the delay to avoid tearing. It would be better to implement an fps limiter and flush the contents, for example 30 times per second.
 
 ## Additional reading
