@@ -167,7 +167,73 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano bin
 $ dfu-util -d 28e9:0189 -a 0 --dfuse-address 0x08000000:leave -D firmware.bin
 ```
 
-Before running `dfu-util` you need to put the board to download mode. Do this by holding down the `BOOT` and `RESET` buttons and then release the `BOOT` button to enter download mode.
+Before running `dfu-util` you need to put the board to download mode. Do this by holding down the `RESET` and `BOOT` buttons and then release them in the same order.
+
+## Uploading via Serial
+
+Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](http://sourceforge.nwiki/Home/et/p/stm32flash/wiki/Home/) utility seems to work. I simply installed the version available for my operating system.
+
+```text
+$ sudo apt install stm32flash
+```
+
+You also need an USB to TTL converter. I am using [TTL-234X-3V3](https://ftdichip.com/products/ttl-234x-3v3/). Note that while signal levels are `3V3` the `VCC` on this converter is `5V`. With this converter `VCC` cannot be connected to the debug header. Connect it to the `5V` pin instead. This will also power up the board.
+
+| USB to TTL | Longan Nano |
+|-----------|-------------|
+| GND       | GND         |
+| VCC       | 5V          |
+| RXD       | T0          |
+| TXD       | R0          |
+
+After wiring is correct you can test if the connection works. Go to bootloader mode by first holding down the `RESET` and `BOOT` buttons and then release them in same order. When in bootloader mode you can probe the usb device.
+
+```text
+$ stm32flash /dev/ttyUSB0 -b 115200
+
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Interface serial_posix: 115200 8E1
+GET returns unknown commands (0x 6)
+Version      : 0x30
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0410 (STM32F10xxx Medium-density)
+- RAM        : 20KiB  (512b reserved by bootloader)
+- Flash      : 128KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 2KiB
+```
+
+While `stm32flash` utility detects a device in it gets the specs wrong. Probably because officially it does not support the `GD32V` family. Flashing still works fine though. You can flash both `.bin` and `.hex` files.
+
+```text
+$ stm32flash -g 0x08000000 -b 115200 -w firmware.bin /dev/ttyUSB0
+
+
+stm32flash 0.5
+
+http://stm32flash.sourceforge.net/
+
+Using Parser : Raw BINARY
+Interface serial_posix: 115200 8E1
+GET returns unknown commands (0x 6)
+Version      : 0x30
+Option 1     : 0x00
+Option 2     : 0x00
+Device ID    : 0x0410 (STM32F10xxx Medium-density)
+- RAM        : 20KiB  (512b reserved by bootloader)
+- Flash      : 128KiB (size first sector: 4x1024)
+- Option RAM : 16b
+- System RAM : 2KiB
+Write to memory
+Erasing memory
+Wrote address 0x08011d30 (100.00%) Done.
+
+Starting execution at address 0x08000000... done.
+```
 
 ## Hello World on Screen
 
