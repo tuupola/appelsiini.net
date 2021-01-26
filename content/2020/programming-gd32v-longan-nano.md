@@ -1,9 +1,9 @@
 ---
 title: Programming the GD32V Longan Nano
-date: 2020-11-14
+date: 2020-12-03
 draft: false
 image: img/2020/gd32v-rotozoom.jpg
-description: Lorem ipsum dolor sit amet.
+description: How to wire and program the Sipeed Longan Nano.
 tags:
     - Electronics
     - GD32V
@@ -12,7 +12,7 @@ tags:
 
 ![Plasma on GD32V](/img/2020/gd32v-plasma.jpg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+RISC-V is gaining traction and some development boards have already popped up. One of them is the widely available [Sipeed Longan Nano](https://www.seeedstudio.com/Sipeed-Longan-Nano-RISC-V-GD32VF103CBT6-DEV-Board-p-4725.html). Written information is a bit sparse at the moment. Let's try to fix this with a quick writeup on wiring and programming the board. If you just want to see what the board can do [here is a video](https://vimeo.com/486801605) instead.
 
 <!--more-->
 
@@ -169,8 +169,6 @@ $ dfu-util -d 28e9:0189 -a 0 --dfuse-address 0x08000000:leave -D firmware.bin
 
 Before running `dfu-util` you need to put the board to download mode. Do this by holding down the `BOOT` and `RESET` buttons and then release the `BOOT` button to enter download mode.
 
-## Uploading via Serial
-
 ## Hello World on Screen
 
 For graphics programming you could use [HAGL](https://github.com/tuupola/hagl). As the name implies HAGL is a hardware agnostic graphics library. To make it work with Longan Nano you also need a [HAGL GD32V HAL](https://github.com/tuupola/hagl_gd32v_mipi)
@@ -284,5 +282,9 @@ void main()
 ```
 
 This is very naive approach and you need to manually adjust the delay to avoid tearing. It would be better to implement an fps limiter and flush the contents, for example 30 times per second.
+
+Even though the Longan Nano is not the fastest and has only 32kB of memory the [Nuclei SDK](https://doc.nucleisys.com/nuclei_sdk/) makes it pleasant to work with. Despite being tiny you can still do interesting stuff such as [old school demo effects](https://github.com/tuupola/gd32v_effects/) with it.
+
+{{< vimeo 486801605 >}}
 
 ## Additional reading
