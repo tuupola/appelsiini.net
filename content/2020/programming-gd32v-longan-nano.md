@@ -94,7 +94,7 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
 | VREF	   | 3v3         |
 | GND      | GND         |
 | TDI      | JTDI        |
-| RST      | RST         |
+| NRST     | RST         |
 | TMS      | JTMS        |
 | TDO      | JTDO        |
 | TCK      | JTCK        |
