@@ -48,7 +48,7 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano all
 $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
 ```
 
-The SDK will take care of basic things such use redirecting `STDOUT` to `USART`. This is where the [Sipeed USB-JTAG/TTL RISC-V Debugger](https://www.seeedstudio.com/Sipeed-USB-JTAG-TTL-RISC-V-Debugger-p-2910.html) really pays off. In addition to the JTAG interface it also acts as an USB to TTL converter.
+The SDK will take care of basic things such use redirecting `STDOUT` to `USART`. This is where the [Sipeed USB-JTAG/TTL RISC-V Debugger](https://www.seeedstudio.com/Sipeed-USB-JTAG-TTL-RISC-V-Debugger-ST-Link-V2-STM8-STM32-Simulator-p-2910.html) really pays off. In addition to the JTAG interface it also acts as an USB to TTL converter.
 
 ```text
 $ screen /dev/ttyUSB1 115200
@@ -94,7 +94,7 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
 | VREF	   | 3v3         |
 | GND      | GND         |
 | TDI      | JTDI        |
-| RST      | RST         |
+| NRST     | RST         |
 | TMS      | JTMS        |
 | TDO      | JTDO        |
 | TCK      | JTCK        |
