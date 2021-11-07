@@ -1,3 +1,3 @@
 [submodule "themes/hyde"]
 	path = themes/hyde
-	url = git@github.com:tuupola/hyde.git
+	url = https://github.com/tuupola/hyde.git
