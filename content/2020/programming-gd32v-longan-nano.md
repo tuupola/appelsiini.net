@@ -16,6 +16,46 @@ RISC-V is gaining traction and some development boards have already popped up. O
 
 <!--more-->
 
+## Toolchain
+
+The situation with RISC-V toolchain is somewhat confusing. There are [RISC-V Software Collaboration](https://github.com/riscv-collab/), [RISC-V Software](https://github.com/riscv-software-src/) and [RISC-V](https://github.com/riscv/) repositories. Some vendors also provide their own prebuilt binaries but they often seem to be outdated.
+
+Luckily the toolchain is easy to compile by yourself. Only downside is that the toolchain repository is huge and using a shallow copy did not seem to work.
+
+```shell
+$ git clone --recursive https://github.com/riscv-collab/riscv-gnu-toolchain.git
+$ cd riscv-gnu-toolchain
+
+$ mkdir /opt/riscv
+$ ./configure --prefix=/opt/riscv --enable-multilib --with-cmodel=medany
+$ make -j8
+$ make install
+```
+
+Additionally you need the [RISC-V version of OpenOCD](https://github.com/riscv/riscv-openocd). Below example is for Fedora. You might be missing different set of dependencies.
+
+
+```shell
+$ sudo dnf install libtool autoconf automake texinfo
+$ sudo dnf install libusb-devel
+
+$ git clone --recursive https://github.com/riscv/riscv-openocd.git
+$ cd riscv-openocd
+
+$ ./bootstrap nosubmodule
+$ ./configure --prefix=/opt/riscv/
+$ make -j8
+$ make install
+```
+
+If you are using macOS you can also install the toolchain and OpenOCD with Homebrew.
+
+```shell
+$ brew tap riscv/riscv
+$ brew install riscv-tools
+$ brew install riscv-openocd
+```
+
 ## Nuclei SDK
 
 For programming a GD32V series SoC best choice at the moment is the [Nuclei SDK](https://doc.nucleisys.com/nuclei_sdk/). It seems to be well maintained, exceptionally well structured and is quite easy to learn. Developing is done with your favourite text editor.
@@ -102,7 +142,7 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
 You can also use SEGGER J-Link Commander to upload the firmware. The command line utility requires the firmare to be in hex format.
 
 ```text
-$ riscv-nuclei-elf-objcopy firmware.elf -O ihex firmware.hex
+$ riscv64-unknown-elf-objcopy firmware.elf -O ihex firmware.hex
 ```
 
 You can connect to Longan Nano's JTAG interface automatically with the following.
@@ -171,11 +211,7 @@ Before running `dfu-util` you need to put the board to download mode. Do this by
 
 ## Uploading via Serial
 
-Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](http://sourceforge.nwiki/Home/et/p/stm32flash/wiki/Home/) utility seems to work. I simply installed the version available for my operating system.
-
-```text
-$ sudo apt install stm32flash
-```
+Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](http://sourceforge.nwiki/Home/et/p/stm32flash/wiki/Home/) utility seems to work. 
 
 You also need an USB to TTL converter. I am using [TTL-234X-3V3](https://ftdichip.com/products/ttl-234x-3v3/). Note that while signal levels are `3V3` the `VCC` on this converter is `5V`. With this converter `VCC` cannot be connected to the debug header. Connect it to the `5V` pin instead. This will also power up the board.
 
