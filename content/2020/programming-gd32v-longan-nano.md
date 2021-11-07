@@ -211,7 +211,7 @@ Before running `dfu-util` you need to put the board to download mode. Do this by
 
 ## Uploading via Serial
 
-Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](http://sourceforge.nwiki/Home/et/p/stm32flash/wiki/Home/) utility seems to work. 
+Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](https://sourceforge.net/p/stm32flash/wiki/Home/) utility seems to work. 
 
 You also need an USB to TTL converter. I am using [TTL-234X-3V3](https://ftdichip.com/products/ttl-234x-3v3/). Note that while signal levels are `3V3` the `VCC` on this converter is `5V`. With this converter `VCC` cannot be connected to the debug header. Connect it to the `5V` pin instead. This will also power up the board.
 
