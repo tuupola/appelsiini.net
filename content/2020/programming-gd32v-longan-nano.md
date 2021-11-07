@@ -277,8 +277,8 @@ For graphics programming you could use [HAGL](https://github.com/tuupola/hagl). 
 
 ```text
 $ cd lib
-$ git clone git@github.com:tuupola/hagl.git
-$ git clone git@github.com:tuupola/hagl_gd32v_mipi.git hagl_hal
+$ git clone https://github.com/tuupola/hagl.git
+$ git clone https://github.com/tuupola/hagl_gd32v_mipi.git hagl_hal
 ```
 
 Add both dependencies to the project Makefile.
