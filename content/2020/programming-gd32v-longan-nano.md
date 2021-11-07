@@ -197,7 +197,8 @@ $ git clone git://git.code.sf.net/p/dfu-util/dfu-util
 $ cd dfu-util
 $ ./autogen.sh
 $ ./configure --prefix=/opt/dfu-util
-$ make -j8 install
+$ make -j8 
+$ sudo make install
 ```
 
 Then add `/opt/dfu-util/bin` to your `$PATH` and you should be able to flash the firmware via USB.
@@ -212,6 +213,15 @@ Before running `dfu-util` you need to put the board to download mode. Do this by
 ## Uploading via Serial
 
 Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](https://sourceforge.net/p/stm32flash/wiki/Home/) utility seems to work. 
+
+``shell
+$ git clone https://git.code.sf.net/p/stm32flash/code stm32flash  
+$ cd stm32flash
+$ autoreconf -i -v
+$ ./configure --prefix=/opt/stm32flash
+$ make -j8
+$ sudo make install
+```
 
 You also need an USB to TTL converter. I am using [TTL-234X-3V3](https://ftdichip.com/products/ttl-234x-3v3/). Note that while signal levels are `3V3` the `VCC` on this converter is `5V`. With this converter `VCC` cannot be connected to the debug header. Connect it to the `5V` pin instead. This will also power up the board.
 
