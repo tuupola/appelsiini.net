@@ -142,7 +142,7 @@ $ make SOC=gd32vf103 BOARD=gd32vf103c_longan_nano upload
 You can also use SEGGER J-Link Commander to upload the firmware. The command line utility requires the firmare to be in hex format.
 
 ```text
-$ riscv-nuclei-elf-objcopy firmware.elf -O ihex firmware.hex
+$ riscv64-unknown-elf-objcopy firmware.elf -O ihex firmware.hex
 ```
 
 You can connect to Longan Nano's JTAG interface automatically with the following.
