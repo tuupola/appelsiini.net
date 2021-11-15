@@ -18,7 +18,7 @@ RISC-V is gaining traction and some development boards have already popped up. O
 
 ## Toolchain
 
-The situation with RISC-V toolchain is somewhat confusing. There are [RISC-V Software Collaboration](https://github.com/riscv-collab/), [RISC-V Software](https://github.com/riscv-software-src/) and [RISC-V](https://github.com/riscv/) repositories. Some vendors also provide their own prebuilt binaries but they often seem to be outdated.
+The situation with RISC-V toolchain is somewhat confusing. There are [RISC-V Software Collaboration](https://github.com/riscv-collab/), [RISC-V Software](https://github.com/riscv-software-src/), [RISC-V Microcontroller](https://github.com/riscv-mcu/) and [RISC-V](https://github.com/riscv/) repositories. Some vendors also provide their own prebuilt binaries but they often seem to be outdated.
 
 Luckily the toolchain is easy to compile by yourself. Only downside is that the toolchain repository is huge and using a shallow copy did not seem to work.
 
