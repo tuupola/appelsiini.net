@@ -32,6 +32,13 @@ $ make -j8
 $ make install
 ```
 
+**Protip!** If you also have Kendryte K210 based development boards, you can use the same toolchain if you configure it like this.
+
+```shell
+$ ./configure --prefix=/opt/riscv --enable-multilib --with-cmodel=medany \
+  --with-arch=rv64imafc --with-abi=lp64f
+```
+
 Additionally you need the [RISC-V version of OpenOCD](https://github.com/riscv/riscv-openocd). Below example is for Fedora. You might be missing different set of dependencies.
 
 
@@ -197,7 +204,7 @@ $ git clone git://git.code.sf.net/p/dfu-util/dfu-util
 $ cd dfu-util
 $ ./autogen.sh
 $ ./configure --prefix=/opt/dfu-util
-$ make -j8 
+$ make -j8
 $ sudo make install
 ```
 
@@ -216,7 +223,7 @@ Finally the GD32V also offers the good old serial bootloader. Although meant to 
 
 
 ```shell
-$ git clone https://git.code.sf.net/p/stm32flash/code stm32flash  
+$ git clone https://git.code.sf.net/p/stm32flash/code stm32flash
 $ cd stm32flash
 $ autoreconf -i -v
 $ ./configure --prefix=/opt/stm32flash
