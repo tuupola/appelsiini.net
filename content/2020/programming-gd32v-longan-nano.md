@@ -18,7 +18,7 @@ RISC-V is gaining traction and some development boards have already popped up. O
 
 ## Toolchain
 
-The situation with RISC-V toolchain is somewhat confusing. There are [RISC-V Software Collaboration](https://github.com/riscv-collab/), [RISC-V Software](https://github.com/riscv-software-src/) and [RISC-V](https://github.com/riscv/) repositories. Some vendors also provide their own prebuilt binaries but they often seem to be outdated.
+The situation with RISC-V toolchain is somewhat confusing. There are [RISC-V Software Collaboration](https://github.com/riscv-collab/), [RISC-V Software](https://github.com/riscv-software-src/), [RISC-V Microcontroller](https://github.com/riscv-mcu/) and [RISC-V](https://github.com/riscv/) repositories. Some vendors also provide their own prebuilt binaries but they often seem to be outdated.
 
 Luckily the toolchain is easy to compile by yourself. Only downside is that the toolchain repository is huge and using a shallow copy did not seem to work.
 
@@ -30,6 +30,13 @@ $ mkdir /opt/riscv
 $ ./configure --prefix=/opt/riscv --enable-multilib --with-cmodel=medany
 $ make -j8
 $ make install
+```
+
+**Protip!** If you also have Kendryte K210 based development boards, you can use the same toolchain if you configure it like this.
+
+```shell
+$ ./configure --prefix=/opt/riscv --enable-multilib --with-cmodel=medany \
+  --with-arch=rv64imafc --with-abi=lp64f
 ```
 
 Additionally you need the [RISC-V version of OpenOCD](https://github.com/riscv/riscv-openocd). Below example is for Fedora. You might be missing different set of dependencies.
@@ -197,7 +204,8 @@ $ git clone git://git.code.sf.net/p/dfu-util/dfu-util
 $ cd dfu-util
 $ ./autogen.sh
 $ ./configure --prefix=/opt/dfu-util
-$ make -j8 install
+$ make -j8
+$ sudo make install
 ```
 
 Then add `/opt/dfu-util/bin` to your `$PATH` and you should be able to flash the firmware via USB.
@@ -211,7 +219,18 @@ Before running `dfu-util` you need to put the board to download mode. Do this by
 
 ## Uploading via Serial
 
-Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](http://sourceforge.nwiki/Home/et/p/stm32flash/wiki/Home/) utility seems to work. 
+Finally the GD32V also offers the good old serial bootloader. Although meant to be used with the STM32 family the [stm32flash](https://sourceforge.net/p/stm32flash/wiki/Home/) utility seems to work.  You also need to add `/opt/stm32flash/bin` to your `$PATH` and you are good to go.
+
+
+```shell
+$ git clone https://git.code.sf.net/p/stm32flash/code stm32flash
+$ cd stm32flash
+$ autoreconf -i -v
+$ ./configure --prefix=/opt/stm32flash
+$ make -j8
+$ sudo make install
+```
+
 
 You also need an USB to TTL converter. I am using [TTL-234X-3V3](https://ftdichip.com/products/ttl-234x-3v3/). Note that while signal levels are `3V3` the `VCC` on this converter is `5V`. With this converter `VCC` cannot be connected to the debug header. Connect it to the `5V` pin instead. This will also power up the board.
 
@@ -277,8 +296,8 @@ For graphics programming you could use [HAGL](https://github.com/tuupola/hagl). 
 
 ```text
 $ cd lib
-$ git clone git@github.com:tuupola/hagl.git
-$ git clone git@github.com:tuupola/hagl_gd32v_mipi.git hagl_hal
+$ git clone https://github.com/tuupola/hagl.git
+$ git clone https://github.com/tuupola/hagl_gd32v_mipi.git hagl_hal
 ```
 
 Add both dependencies to the project Makefile.
