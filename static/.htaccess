@@ -50,5 +50,5 @@ RedirectMatch 301 ^/projects/lazyload/enabled_ajax.html$ /projects/lazyload/fade
     Header add Link "</css/print.css>; rel=preload; as=style"
     Header add Link "</css/hyde.css>; rel=preload; as=style"
     Header add Link "<https://fonts.googleapis.com>; rel=preconnect"
-    Header add Link "<https://cdn.simpleanalytics.io>; rel=preconnect"
+    Header add Link "<https://plausible.io>; rel=preconnect"
 </FilesMatch>
