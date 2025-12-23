@@ -16,7 +16,7 @@ just begged to be abused. I had an idea to control the content of laptop
 browser by tilting and rotating the phone. I had working but ugly code
 before ship arrived to Helsinki.
 
-> If you have short attention span go straight to the [HTML5 logo](https://appelsiini.net/demo/websocket/html5.html) demo.
+> If you have short attention span go straight to the [HTML5 logo](https://www.appelsiini.net/demo/websocket/html5.html) demo.
 
 [Code](https://github.com/tuupola/demo_code/tree/master/websocket) has
 been sitting on my hard drive since. I cleaned it up during last couple
@@ -33,8 +33,8 @@ oh-so-hot-at-the-moment HTML5 logo.
 
 First open demo page with your browser. Browser must support WebSockets.
 If you are using Safari which also support CSS 3D transforms check
-[HTML5 Logo](https://appelsiini.net/demo/websocket/html5.html) page.
-If you are using Chrome try [Colour Cube](https://appelsiini.net/demo/websocket/cube.html) page. When you
+[HTML5 Logo](https://www.appelsiini.net/demo/websocket/html5.html) page.
+If you are using Chrome try [Colour Cube](https://www.appelsiini.net/demo/websocket/cube.html) page. When you
 open a demo page it generates a random PIN number and connects to a
 WebSocket server. PIN number is used as part of channel name.
 
@@ -42,7 +42,7 @@ WebSocket server. PIN number is used as part of channel name.
 var socket = new WebSocket("ws://ws.appelsiini.net:8080/iphone/" + pin);
 ```
 
-Next open the [mobile page](https://appelsiini.net/demo/websocket/iphone.html) with you
+Next open the [mobile page](https://www.appelsiini.net/demo/websocket/iphone.html) with you
 iPhone or iPod. Enter PIN number from previous page and press connect.
 Your mobile browser now connects to same WebSocket server.
 
@@ -56,7 +56,7 @@ determine iPhone orientation. When user tilts or turn the device new
 orientation is sent via WebSocket to server. Server in turn sends the
 same data to computer browser which is listening on same channel.
 
-Every time [HTML5 Logo](https://appelsiini.net/demo/websocket/html5.html) page receives WebSocket message it animates the logo using CSS 3D transforms.
+Every time [HTML5 Logo](https://www.appelsiini.net/demo/websocket/html5.html) page receives WebSocket message it animates the logo using CSS 3D transforms.
 
 ```javascript
 socket.onmessage = function(event) {
@@ -67,7 +67,7 @@ socket.onmessage = function(event) {
 }
 ```
 
-[Colour Cube](https://appelsiini.net/demo/websocket/cube.html) is
+[Colour Cube](https://www.appelsiini.net/demo/websocket/cube.html) is
 almost the same. Only difference is It uses
 [Pre3d](http://deanm.github.com/pre3d/) JavaScript 3d rendering engine
 to draw and animate the cube.

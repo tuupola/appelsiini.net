@@ -11,7 +11,7 @@ photo: whereami-headline-1400-2.png
 
 ![Static Maps](/img/2008/map_bubble.png)
 
-Most of the code from previous Static Maps experiments is now put into one clean package. Previously I showed you how to work with [markers and bounds](https://appelsiini.net/2008/simple-static-maps-with-php/). Now we go forward and add zoom and pan controls. It takes only few lines of code. If you just started reading the series check the [theory how it works](https://appelsiini.net/2008/google-maps-without-javascript-part-2/). As a bonus lets add infowindows / bubbles too.
+Most of the code from previous Static Maps experiments is now put into one clean package. Previously I showed you how to work with [markers and bounds](https://www.appelsiini.net/2008/simple-static-maps-with-php/). Now we go forward and add zoom and pan controls. It takes only few lines of code. If you just started reading the series check the [theory how it works](https://www.appelsiini.net/2008/google-maps-without-javascript-part-2/). As a bonus lets add infowindows / bubbles too.
 
 <!--more-->
 

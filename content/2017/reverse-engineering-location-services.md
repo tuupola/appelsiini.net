@@ -289,7 +289,7 @@ If at least three of those are actually visible to the client [core location](ht
 
 Below are the access points location services returned while requesting location in Changi.
 
-<img src="https://appelsiini.net/img/changi-access-points.jpg" alt="" class="img-thumbnail img-fluid" />
+<img src="https://www.appelsiini.net/img/changi-access-points.jpg" alt="" class="img-thumbnail img-fluid" />
 
 Having information of hundred access points around you also reduces the need of contacting the location services server again. As long as core location has coordinates of three visible access points it can calculate the location accurately. This can be done even when offline as long as wifi is turned on.
 

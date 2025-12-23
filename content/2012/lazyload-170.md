@@ -6,7 +6,7 @@ tags:
 photo: kleber-varejao-filho-14626.jpg
 ---
 
-Previous version of [Lazy Load](https://appelsiini.net/projects/lazyload/) gained traction pretty fast. Good patches were submitted to GitHub. This version of plugin mostly concentrates on speed optimization and event handlers.
+Previous version of [Lazy Load](https://www.appelsiini.net/projects/lazyload/) gained traction pretty fast. Good patches were submitted to GitHub. This version of plugin mostly concentrates on speed optimization and event handlers.
 
 ### New Events
 
@@ -56,4 +56,3 @@ $("img:right-of-screen").something();
 ### Download
 
 Latest [source](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.js) or [minified](https://raw.github.com/tuupola/jquery_lazyload/master/jquery.lazyload.min.js). Plugin has been tested with Safari 5.1, Firefox 3.6, Firefox 7.0, Firefox 8.0 on OSX and Firefox 3.0, Chrome 14 and IE 8 on Windows and Safari 5.1 on iOS 5 both iPhone and iPad.
-

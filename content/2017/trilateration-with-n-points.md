@@ -12,7 +12,7 @@ payoff: Mathematical brute forcing.
 
 The popularity of WiFi networks has been rising rapidly during the last 15 years. In urban areas hotspots are ubiquous. These hotspots together with trilateration algorithms provide a cheap way to find out yours or someone elses location.
 
-Because of my previous work with [Apple location services](https://appelsiini.net/2017/reverse-engineering-location-services/) I wanted to figure out how trilateration works. Being a school dropout I am really really bad in mathematics. However I consider myself good at trial and error so I reckon this should be doable.
+Because of my previous work with [Apple location services](https://www.appelsiini.net/2017/reverse-engineering-location-services/) I wanted to figure out how trilateration works. Being a school dropout I am really really bad in mathematics. However I consider myself good at trial and error so I reckon this should be doable.
 
 <!--more-->
 
@@ -43,7 +43,7 @@ $ R
 
 [RFiddle](http://www.r-fiddle.org/#/fiddle?id=HtfoEOaM&version=2)
 
-To test this out I also made a Google Maps page for visualizing the logic. On the map I drew [three circles](https://appelsiini.net/circles/?c=60.1695,24.9354,82175&c=58.3806,26.7251,163311&c=58.3859,24.4971,117932) with the distance from Tallinn as radius from each city center.
+To test this out I also made a Google Maps page for visualizing the logic. On the map I drew [three circles](https://www.appelsiini.net/circles/?c=60.1695,24.9354,82175&c=58.3806,26.7251,163311&c=58.3859,24.4971,117932) with the distance from Tallinn as radius from each city center.
 
 [![Three circles](/img/trilateration-tallinn.jpg)](/circles/?c=60.1695,24.9354,82175&c=58.3806,26.7251,163311&c=58.3859,24.4971,117932)
 

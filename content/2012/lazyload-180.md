@@ -6,7 +6,7 @@ tags:
 photo: kleber-varejao-filho-14626.jpg
 ---
 
-This version of [Lazy Load](https://appelsiini.net/projects/lazyload/) is just a bugfix release. Minor release number bump is there because I pulled a new feature in last minute and I did not want to mess up my git branching. Bugfix usually does not normally warrant for the minor bump.
+This version of [Lazy Load](https://www.appelsiini.net/projects/lazyload/) is just a bugfix release. Minor release number bump is there because I pulled a new feature in last minute and I did not want to mess up my git branching. Bugfix usually does not normally warrant for the minor bump.
 
 ### Bugs fixed
 

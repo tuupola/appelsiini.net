@@ -177,5 +177,4 @@ It takes a bit work but you can have clickable markers with static map. Yes I us
 
 You can find [source code](http://svn.appelsiini.net/viewvc/javascript/trunk/google_maps_nojs/) to the [working demo](http://www.appelsiini.net/demo/google_maps_nojs/imagemap.html) from svn.
 
-Related entries: [Google Maps Without JavaScript Part 1](https://appelsiini.net/2008/google-maps-without-javascript), [Google Maps Without JavaScript Part 2](https://www.appelsiini.net/2008/google-maps-without-javascript-part-2), [Infowindows With Google Static Maps](https://www.appelsiini.net/2008/infowindows-with-google-static-maps).
-
+Related entries: [Google Maps Without JavaScript Part 1](https://www.appelsiini.net/2008/google-maps-without-javascript), [Google Maps Without JavaScript Part 2](https://www.appelsiini.net/2008/google-maps-without-javascript-part-2), [Infowindows With Google Static Maps](https://www.appelsiini.net/2008/infowindows-with-google-static-maps).

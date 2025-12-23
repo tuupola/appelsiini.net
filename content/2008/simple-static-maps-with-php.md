@@ -103,4 +103,4 @@ $ git clone git://github.com/tuupola/php_google_maps.git
 $ wget http://github.com/tuupola/php_google_maps/zipball/master
 ```
 
-Related entries: [Infowindows With Google Static Maps](https://appelsiini.net/2008//infowindows-with-google-static-maps/), [Clickable Markers With Google Static Maps](https://appelsiini.net/2008//clickable-markers-with-google-static-maps/).
+Related entries: [Infowindows With Google Static Maps](https://www.appelsiini.net/2008//infowindows-with-google-static-maps/), [Clickable Markers With Google Static Maps](https://www.appelsiini.net/2008//clickable-markers-with-google-static-maps/).

@@ -70,7 +70,7 @@ Rest of the json contains your posts, reposts and likes.
     "title": "Mika Tuupola",
     "description": "Technology guy gone advertising",
     "url": [
-        "https://appelsiini.net/social.json",
+        "https://www.appelsiini.net/social.json",
         "https://example.org/social.json"
     ],
     "posts": [],

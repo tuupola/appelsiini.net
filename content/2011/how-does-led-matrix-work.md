@@ -23,7 +23,7 @@ down led would be (D,4).
 Led matrices come in two flavors. Common-row anode (left) and common-row
 cathode (right).
 
-![Led matrices](https://appelsiini.net/attachments/4x4-1.png)
+![Led matrices](https://www.appelsiini.net/attachments/4x4-1.png)
 
 <!--more-->
 
@@ -47,7 +47,7 @@ leds to prototyping board with epoxy glue. This way it is easier to have
 LEDs beautifully aligned. When gluing the leds make sure long and short
 legs are aligned the same way.
 
-![Gluing led matrix](https://appelsiini.net/attachments/4x4-glue.jpg)
+![Gluing led matrix](https://www.appelsiini.net/attachments/4x4-glue.jpg)
 
 When glue is dry it is time to bend and solder. First bend all cathodes
 to left as close to prototyping board as possible. Solder all cathodes
@@ -55,12 +55,12 @@ in each row together. When cathodes are ready, bend all anodes. Anodes
 must not touch cathodes. I used piece of plastic tubing to help bending
 the anodes to form a bridge above cathodes.
 
-![Bending legs](https://appelsiini.net/attachments/4x4-bend.jpg)
+![Bending legs](https://www.appelsiini.net/attachments/4x4-bend.jpg)
 
 Now solder together all anodes in each row. Solder the headers and
 connect cathode rows directly to the header.
 
-![Bottom](https://appelsiini.net/attachments/4x4-bottom.jpg)
+![Bottom](https://www.appelsiini.net/attachments/4x4-bottom.jpg)
 
 Anode rows are connected to header with current limiting resistors.
 Value of the resistor depends on the LED used. Check the LED datasheet
@@ -68,26 +68,26 @@ for forward voltage and current. [LED
 calculator](http://led.linear1.org/1led.wiz) will help you finding out
 correct resistor. Matrix is now ready for testing.
 
-![Top](https://appelsiini.net/attachments/4x4-top.jpg)
+![Top](https://www.appelsiini.net/attachments/4x4-top.jpg)
 
 ### Addressing Single LED
 
 Connecting ground to row A and positive voltage to column 1 will light
 the top right LED (A,1).
 
-![Single led lit](https://appelsiini.net/attachments/4x4-test-1.jpg)
+![Single led lit](https://www.appelsiini.net/attachments/4x4-test-1.jpg)
 
 Connecting ground to row D and positive voltage to column 4 will light
 the bottom down LED (D,4).
 
-![Single led lit](https://appelsiini.net/attachments/4x4-test-2.jpg)
+![Single led lit](https://www.appelsiini.net/attachments/4x4-test-2.jpg)
 
 Intuition would say lighting the both (A,1) and (D,4) at the same time
 is just connecting all the four wires. This is not the case. There are
 four LEDs which are lit. This is because current is also flowing through
 (A,4) and (D,1).
 
-![Four leds lit](https://appelsiini.net/attachments/4x4-test-3.jpg)
+![Four leds lit](https://www.appelsiini.net/attachments/4x4-test-3.jpg)
 
 ### Multiplexing and Persistence of Vision
 

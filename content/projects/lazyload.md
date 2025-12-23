@@ -93,7 +93,7 @@ $("img.lazyload").lazyload();
 
 ### Blur Up Images
 
-Low resolution placeholder ie. the "blur up" technique. You can see this in action [in this blog entry](https://appelsiini.net/2017/trilateration-with-n-points/). Scroll down to see blur up images.
+Low resolution placeholder ie. the "blur up" technique. You can see this in action [in this blog entry](https://www.appelsiini.net/2017/trilateration-with-n-points/). Scroll down to see blur up images.
 
 ```html
 <img class="lazyload"

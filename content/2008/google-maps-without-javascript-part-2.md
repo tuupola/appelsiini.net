@@ -125,4 +125,4 @@ These query strings are later used as links for panning controls.
 
 Now we have non JavaScript map with working sidebar, zoom and panning. Info windows (bubbles) are still missing. Lets leave that for part 3. You can find source [code](http://svn.appelsiini.net/viewvc/javascript/trunk/google_maps_nojs/) to the [working demo](http://www.appelsiini.net/demo/google_maps_nojs/enabled.html) from svn.
 
-Related entries: [Google Maps Without JavaScript Part 1](https://appelsiini.net/2008/google-maps-without-javascript/), [Clickable Markers With Google Static Maps](https://appelsiini.net/2008/clickable-markers-with-google-static-maps/), [Infowindows With Google Static Maps](https://appelsiini.net/2008/infowindows-with-google-static-maps/).
+Related entries: [Google Maps Without JavaScript Part 1](https://www.appelsiini.net/2008/google-maps-without-javascript/), [Clickable Markers With Google Static Maps](https://www.appelsiini.net/2008/clickable-markers-with-google-static-maps/), [Infowindows With Google Static Maps](https://www.appelsiini.net/2008/infowindows-with-google-static-maps/).

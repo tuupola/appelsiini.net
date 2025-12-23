@@ -11,7 +11,7 @@ photo: whereami-headline-1400-2.png
 
 ![Static Maps](/img/2008/static_with_bubble.png)
 
-Previously I showed you how to make a [Google Static Map with clickable markers](https://appelsiini.net/2008/clickable-markers-with-google-static-maps). Several people emailed me to ask how to show infowindow (or infobubble) when marker is clicked. Technique I explain below still needs JavaScript. It is used to open the infowindow. I use jQuery library in the examples.
+Previously I showed you how to make a [Google Static Map with clickable markers](https://www.appelsiini.net/2008/clickable-markers-with-google-static-maps). Several people emailed me to ask how to show infowindow (or infobubble) when marker is clicked. Technique I explain below still needs JavaScript. It is used to open the infowindow. I use jQuery library in the examples.
 
 Image above is just a screenshot. There is a separate page for [working demo](http://www.appelsiini.net/demo/google_maps_nojs/imagemap.html). Full [source code](http://svn.appelsiini.net/viewvc/javascript/trunk/google_maps_nojs/) is also available.
 
