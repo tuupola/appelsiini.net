@@ -1,0 +1,4 @@
+<IfModule mod_mime.c>
+   ForceType application/octet-stream
+   Header always set Access-Control-Allow-Origin "*"
+</IfModule>
