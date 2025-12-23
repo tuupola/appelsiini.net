@@ -1,8 +1,13 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+RewriteRule ^js/script.js https://plausible.io/js/scipt-local.js [P]
+RewriteRule ^api/event https://plausible.io/api/event [P]
+#RewriteRule ^api/event https://https://0db2c9fe17.endpoints.dev [P]
+
+# This is now actually done in Bunny
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 RewriteRule ^index\.html$ / [R=301,L]
 RewriteRule ^(.*)/index\.html$ $1/ [R=301,L]
@@ -10,7 +15,16 @@ RewriteRule ^(.*)/index\.html$ $1/ [R=301,L]
 RewriteCond %{HTTP_REFERER} !^$
 RewriteCond %{HTTP_REFERER} !^https://(www\.)?appelsiini.net/.*$ [NC]
 RewriteCond %{REQUEST_URI} !^/js/hotlink.js$
-RewriteRule \.(js)$ https://appelsiini.net/js/hotlink.js [R,L]
+RewriteRule \.(js)$ https://www.appelsiini.net/js/hotlink.js [R,L]
+
+RewriteCond %{HTTP_REFERER} ^http://(www\.)?tiempo.com.mx/.*$ [NC]
+RewriteRule \.(gif)$ http://www.tiempo.com.mx/ [R,L]
+
+RedirectMatch 301 jquery.lazyload.js /js/hotlink.js
+RedirectMatch 301 jquery.lazyload.min.js /js/hotlink.js
+RedirectMatch 301 jquery.chained.js /js/hotlink.js
+RedirectMatch 301 jquery.chained.min.js /js/hotlink.js
+RedirectMatch 301 ^/js/all.js /js/hotlink.js
 
 RedirectMatch 301 ^/feed.xml$ /index.xml
 
@@ -18,7 +32,7 @@ RedirectMatch 301 ^/2008/11/introduction-to-marker-clustering-with-google-maps /
 RedirectMatch 301 ^/2017/m5stack-esp32-firmware-cli /2018/m5stack-esp32-firmware-cli/
 RedirectMatch 301 ^/2017/how-does-trilateration-work /2017/trilateration-with-n-points/
 
-RedirectMatch 301 ^/https://appelsiini.net /
+RedirectMatch 301 ^/https://www.appelsiini.net /
 RedirectMatch 301 ^/javascript$ /tags/javascript/
 RedirectMatch 301 ^/lazyload$ /tags/javascript/
 RedirectMatch 301 ^/lazy-load$ /tags/javascript/
@@ -50,5 +64,4 @@ RedirectMatch 301 ^/projects/lazyload/enabled_ajax.html$ /projects/lazyload/fade
     Header add Link "</css/print.css>; rel=preload; as=style"
     Header add Link "</css/hyde.css>; rel=preload; as=style"
     Header add Link "<https://fonts.googleapis.com>; rel=preconnect"
-    Header add Link "<https://plausible.io>; rel=preconnect"
 </FilesMatch>
